@@ -1,5 +1,5 @@
 # Photo title search engine
-Search engine witch  find photos titles in newspaper
+Search engine which find photo's titles in newspaper.
 ## Technologies
 - Django 4.1
 - React
