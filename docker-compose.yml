@@ -12,7 +12,7 @@ services:
     stdin_open: true
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
-  react:
+  react-ts:
     build: ./frontend
     stdin_open: true
     tty: true
@@ -26,4 +26,4 @@ services:
       - NODE_ENV=development
     depends_on:
       - django
-    command: npm start
+    command: npm run dev
