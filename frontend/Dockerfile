@@ -1,16 +1,16 @@
 # Use an official node runtime as a parent image
 FROM node:16
 
-WORKDIR /app/
+WORKDIR /home/node/app
 
 # Install dependencies
-COPY package.json /app/
+COPY package.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm i
 
 # Add rest of the client code
-COPY . /app/
+COPY . ./
+FROM base as production
 
-EXPOSE 3000
-
-CMD npm run dev
+ENV NODE_PATH=./build
+RUN npm run build

@@ -13,17 +13,22 @@ services:
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
   react-ts:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: base
     stdin_open: true
     tty: true
     volumes:
-      - ./frontend:/app
+      - ./frontend/src:/home/node/app/src
       # One-way volume to use node_modules from inside image
-      - /app/node_modules
+      - ./frontend/nodemon.json:/home/node/app/nodemon.json
+    container_name: title-search
+    expose:
+      - "4000"
     ports:
-      - "80:3000"
-    environment:
-      - NODE_ENV=development
+      - "4000:4000"
+
     depends_on:
       - django
     command: npm run dev
