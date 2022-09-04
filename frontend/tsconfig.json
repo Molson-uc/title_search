@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
@@ -14,13 +16,12 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
+    "sourceMap": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "outDir": "./build",
-    "baseUrl": "./src"
+    "jsx": "react-jsx"
   },
   "include": [
     "src"
