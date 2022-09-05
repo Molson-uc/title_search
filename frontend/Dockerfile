@@ -1,17 +1,14 @@
+FROM nginx
 
-# FROM node:16-alpine
-# WORKDIR /app
-# COPY package*.json ./
-# RUN npm install
-# RUN npm install typescript --save-dev
-# EXPOSE 8000
-# CMD [ "npm","run","dev" ]
-FROM node:16 as base
-WORKDIR /home/node/app
+WORKDIR /user/share/react
+RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
+RUN apt-get install -y nodejs
+
 COPY package*.json ./
-RUN npm i
-COPY . .
+RUN npm install
 
-FROM base as prodaction
-ENV NODE_PATH=./build
+COPY . .
 RUN npm run build
+RUN rm -r /usr/share/nginx/html
+RUN cp -a build/. /usr/share/nginx/html
+EXPOSE 3000
